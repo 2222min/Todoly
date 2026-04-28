@@ -34,7 +34,7 @@ struct CustomDatePicker: View {
                 .frame(width: 40, height: 40)
             }
             .padding(.horizontal, 16).padding(.vertical, 10)
-            .background(Color.white)
+            .background(Color.brandBg)
 
             ScrollView {
                 VStack(spacing: 24) {
@@ -46,7 +46,7 @@ struct CustomDatePicker: View {
                 }.padding(.vertical, 16)
             }
         }
-        .background(Color.white)
+        .background(Color.brandBg)
         .onAppear { loadFromDate() }
     }
 
@@ -80,19 +80,26 @@ struct CustomDatePicker: View {
                         let isSelected = Calendar.current.isDate(date, inSameDayAs: selectedDate)
                         let isToday = Calendar.current.isDateInToday(date)
 
-                        Button { selectedDate = date } label: {
+                        Button {
+                            selectedDate = combineDateTime(date: date)
+                        } label: {
                             Text("\(day)")
                                 .font(.system(size: 15, weight: isSelected ? .bold : .medium, design: .rounded))
                                 .foregroundColor(isSelected ? .white : (isToday ? .accent1 : .txt1))
                                 .frame(width: 40, height: 40)
-                                .background(
-                                    isSelected
-                                    ? AnyShapeStyle(LinearGradient(colors: [.accent1, Color(hex: "FF6B6B")],
-                                                                    startPoint: .topLeading, endPoint: .bottomTrailing))
-                                    : AnyShapeStyle(isToday ? Color.accent1.opacity(0.1) : .clear)
-                                )
+                                .background {
+                                    if isSelected {
+                                        Circle().fill(
+                                            LinearGradient(colors: [.accent1, Color(hex: "FF6B6B")],
+                                                           startPoint: .topLeading, endPoint: .bottomTrailing)
+                                        )
+                                    } else if isToday {
+                                        Circle().fill(Color.accent1.opacity(0.1))
+                                    }
+                                }
                                 .clipShape(Circle())
                         }
+                        .id(day)
                     }
                 }
             }.padding(.horizontal, 16)
@@ -226,6 +233,18 @@ struct CustomDatePicker: View {
         if hour == 0 { hour = 12 }
         else if hour > 12 { hour -= 12 }
         selectedHour = hour
+    }
+
+    /// 날짜 선택 시 현재 picker 시간 정보 유지
+    private func combineDateTime(date: Date) -> Date {
+        let cal = Calendar.current
+        var comps = cal.dateComponents([.year, .month, .day], from: date)
+        var hour = selectedHour
+        if !isAM && hour != 12 { hour += 12 }
+        if isAM && hour == 12 { hour = 0 }
+        comps.hour = hour
+        comps.minute = selectedMinute
+        return cal.date(from: comps) ?? date
     }
 
     private func confirm() {

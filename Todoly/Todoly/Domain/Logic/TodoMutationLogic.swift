@@ -129,4 +129,63 @@ enum TodoMutationLogic {
     static func isValidTitle(_ title: String) -> Bool {
         !title.trimmingCharacters(in: .whitespaces).isEmpty
     }
+
+    // MARK: - 연속 할일 날짜별 완료 토글
+
+    /// 연속 할일의 특정 날짜 완료/미완료 토글 — incomplete 배열만 변경
+    static func toggleDailyCompletion(
+        todoId: String,
+        date: Date,
+        incomplete: [Todo]
+    ) -> [Todo] {
+        var inc = incomplete
+        guard let i = inc.firstIndex(where: { $0.id == todoId }) else { return inc }
+
+        let key = Todo.dateKey(for: date)
+        if inc[i].dailyCompletions[key] != nil {
+            inc[i].dailyCompletions.removeValue(forKey: key)
+        } else {
+            inc[i].dailyCompletions[key] = .now
+        }
+        return inc
+    }
+
+    /// 할 일 필드 업데이트 (연속 할일 포함) — 새로운 배열을 반환
+    static func updateWithPeriod(
+        id: String,
+        title: String,
+        memo: String?,
+        dueDate: Date?,
+        startDate: Date?,
+        endDate: Date?,
+        priority: Priority,
+        categoryName: String?,
+        categoryColor: String?,
+        reminderMinutes: Int?,
+        incomplete: [Todo],
+        completed: [Todo]
+    ) -> ToggleResult {
+        var inc = incomplete
+        var comp = completed
+
+        func applyUpdate(_ todo: inout Todo) {
+            todo.title = title
+            todo.memo = memo
+            todo.dueDate = dueDate
+            todo.startDate = startDate
+            todo.endDate = endDate
+            todo.priority = priority
+            todo.categoryName = categoryName
+            todo.categoryColor = categoryColor
+            todo.reminderMinutes = reminderMinutes
+        }
+
+        if let i = inc.firstIndex(where: { $0.id == id }) {
+            applyUpdate(&inc[i])
+        } else if let i = comp.firstIndex(where: { $0.id == id }) {
+            applyUpdate(&comp[i])
+        }
+
+        return ToggleResult(incomplete: inc, completed: comp)
+    }
 }

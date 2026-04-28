@@ -21,7 +21,7 @@ struct CategoryListView: View {
                         )
                     }
                     tipCard
-                }.padding(24)
+                }.padding(24).padding(.bottom, 120)
             }
         }
         .background(Color.brandBg)
@@ -71,7 +71,7 @@ struct CategoryListView: View {
             }.buttonStyle(SoftPressStyle())
         }
         .padding(.horizontal, 24).padding(.vertical, 16)
-        .background(Color.white.opacity(0.95).shadow(color: .black.opacity(0.04), radius: 12, y: 4))
+        .background(Color.brandBg)
     }
 
     private var tipCard: some View {

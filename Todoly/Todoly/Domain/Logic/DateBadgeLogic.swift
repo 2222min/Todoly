@@ -37,4 +37,22 @@ enum DateBadgeLogic {
 
         return Array(unique.sorted { $0.sortOrder < $1.sortOrder }.prefix(3))
     }
+
+    // MARK: - 연속 할일 배지
+
+    /// 연속 할일 배지 텍스트 ("N일째", "N일째 ✓")
+    static func periodBadge(for todo: Todo, on date: Date = .now) -> (String, BadgeStyle)? {
+        guard todo.isPeriodTask, todo.isActiveOn(date) else { return nil }
+        let dayNum = todo.dayNumber(on: date)
+        if todo.isCompletedOn(date) {
+            return ("\(dayNum)일째 ✓", .today)
+        } else {
+            return ("\(dayNum)일째", .upcoming)
+        }
+    }
+
+    /// 연속 할일 진행률 (완료일수, 전체일수)
+    static func periodProgress(for todo: Todo) -> (completed: Int, total: Int) {
+        (todo.completedDays, todo.totalDays)
+    }
 }

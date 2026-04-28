@@ -26,4 +26,13 @@ protocol TodoStoring: ObservableObject {
         priority: Priority, categoryName: String?, categoryColor: String?,
         reminderMinutes: Int?
     )
+
+    func toggleDailyCompletion(_ todo: Todo, date: Date)
+
+    func updateWithPeriod(
+        id: String, title: String, memo: String?, dueDate: Date?,
+        startDate: Date?, endDate: Date?,
+        priority: Priority, categoryName: String?, categoryColor: String?,
+        reminderMinutes: Int?
+    )
 }
