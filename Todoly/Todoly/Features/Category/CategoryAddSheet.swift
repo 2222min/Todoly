@@ -8,6 +8,7 @@ struct CategoryAddSheet: View {
     @State private var selectedColor = "FF6B6B"
     @State private var selectedEmoji = "👤"
     var editingCategory: TodoCategory? = nil
+    @FocusState private var isFocused: Bool
 
     private let colorOptions = ["FF6B6B","FFAB5E","FFC847","6DD5C8","5B9BF5","5A8AF2","A78BFA","B0B0B0"]
     private let emojiSections: [(String, [String])] = [
@@ -21,39 +22,49 @@ struct CategoryAddSheet: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // 커스텀 헤더
+            // 커스텀 헤더 (버튼 제거 → 하단 CTA)
             HStack {
                 Button { dismiss() } label: {
                     Image(systemName: "xmark")
-                        .font(.system(size: 16, weight: .medium)).foregroundColor(.txt2)
-                        .frame(width: 40, height: 40)
+                        .font(.system(size: 18, weight: .semibold)).foregroundColor(.txt1)
+                        .frame(width: 44, height: 44)
                 }
                 Spacer()
                 Text(editingCategory != nil ? "🏷 카테고리 수정" : "🏷 새 카테고리")
                     .font(.system(size: 17, weight: .semibold, design: .rounded)).foregroundColor(.txt1)
                 Spacer()
-                Button { save() } label: {
-                    Text(editingCategory != nil ? "저장" : "추가")
-                        .font(.system(size: 15, weight: .semibold, design: .rounded))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 20).padding(.vertical, 6)
-                        .background(name.isEmpty ? Color.gray : Color.accent1)
-                        .clipShape(Capsule())
-                }.disabled(name.isEmpty)
+                Color.clear.frame(width: 44, height: 44)
             }
             .padding(.horizontal, 16).padding(.vertical, 10)
             .background(Color.brandBg)
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
+                    previewCard
                     nameField
                     colorPicker
                     emojiPicker
-                    previewCard
                 }.padding(24)
             }
+
+            // 하단 CTA 버튼
+            Button(action: save) {
+                Text(editingCategory != nil ? "저장하기" : "추가하기")
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(name.isEmpty ? Color.gray.opacity(0.4) : Color.accent1)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+            }
+            .disabled(name.isEmpty)
+            .padding(.horizontal, 24)
+            .padding(.top, 8)
+            .padding(.bottom, 16)
+            .background(Color.brandBg)
         }
         .background(Color.brandBg)
+        .onTapGesture { isFocused = false }
         .onAppear {
             if let cat = editingCategory {
                 name = cat.name; selectedColor = cat.color; selectedEmoji = cat.emoji
@@ -67,6 +78,7 @@ struct CategoryAddSheet: View {
             TextField("예: 운동, 공부, 취미...", text: $name, prompt: Text("예: 운동, 공부, 취미...").foregroundColor(.txt2))
                 .font(.system(size: 16, design: .rounded))
                 .foregroundColor(.txt1)
+                .focused($isFocused)
                 .padding(16).background(Color.gray.opacity(0.06))
                 .clipShape(RoundedRectangle(cornerRadius: 16))
         }
