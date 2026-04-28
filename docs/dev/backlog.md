@@ -49,6 +49,9 @@
 | V1-35 | 아키텍처 리팩토링 (플랫→레이어드+Feature 기반, 순수함수 분리, Protocol DI, Preview 필수) | iOS | ✅ 완료 |
 | V1-36 | Tuist Project.swift 모듈화 (레이어별 sources glob) | iOS | ✅ 완료 |
 | V1-37 | 스티어링 규칙 업데이트 (code-quality-rules, project-architecture) | 전체 | ✅ 완료 |
+| V1-38 | 할일 탭 오늘 필터 (오늘 할일만 노출, 오늘 완료만 표시) | iOS | ✅ 구현 완료 |
+| V1-39 | 연속 할일 (기간 할일) 도입 (startDate~endDate, dailyCompletions) | iOS | ✅ 구현 완료 |
+| V1-40 | 연속 할일 날짜별 완료 추적 (4/2 완료해도 4/3 미완료 재등장) | iOS | ✅ 구현 완료 |
 
 ## 🟢 v1.1 (출시 후 업데이트)
 
