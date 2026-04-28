@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 
 /// 중앙 데이터 저장소 — 순수 로직은 Domain/Logic에 위임
 @MainActor
@@ -14,6 +15,7 @@ final class TodoStore: ObservableObject, TodoStoring {
 
     init(notificationService: NotificationScheduling = NotificationService.shared, useSeedData: Bool = false) {
         self.notificationService = notificationService
+        SharedDefaults.migrateIfNeeded()
         if useSeedData {
             seed()
         } else {
@@ -21,41 +23,31 @@ final class TodoStore: ObservableObject, TodoStoring {
         }
     }
 
-    // MARK: - Persistence
-
-    private static let incompleteKey = "todoly_incomplete"
-    private static let completedKey = "todoly_completed"
-    private static let trashKey = "todoly_trash"
-    private static let categoriesKey = "todoly_categories"
-    private static let hasLaunchedKey = "todoly_hasLaunched"
+    // MARK: - Persistence (App Group)
 
     private func save() {
-        let encoder = JSONEncoder()
-        if let d = try? encoder.encode(incomplete) { UserDefaults.standard.set(d, forKey: Self.incompleteKey) }
-        if let d = try? encoder.encode(completed) { UserDefaults.standard.set(d, forKey: Self.completedKey) }
-        if let d = try? encoder.encode(trash) { UserDefaults.standard.set(d, forKey: Self.trashKey) }
-        if let d = try? encoder.encode(categories) { UserDefaults.standard.set(d, forKey: Self.categoriesKey) }
+        SharedDefaults.saveAll(
+            incomplete: incomplete,
+            completed: completed,
+            trash: trash,
+            categories: categories
+        )
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     private func load() {
-        let decoder = JSONDecoder()
-
         // 첫 실행이면 시드 데이터 사용
-        guard UserDefaults.standard.bool(forKey: Self.hasLaunchedKey) else {
+        guard SharedDefaults.shared.bool(forKey: SharedDefaults.hasLaunchedKey) else {
             seed()
-            UserDefaults.standard.set(true, forKey: Self.hasLaunchedKey)
+            SharedDefaults.shared.set(true, forKey: SharedDefaults.hasLaunchedKey)
             save()
             return
         }
 
-        if let d = UserDefaults.standard.data(forKey: Self.incompleteKey),
-           let items = try? decoder.decode([Todo].self, from: d) { incomplete = items }
-        if let d = UserDefaults.standard.data(forKey: Self.completedKey),
-           let items = try? decoder.decode([Todo].self, from: d) { completed = items }
-        if let d = UserDefaults.standard.data(forKey: Self.trashKey),
-           let items = try? decoder.decode([Todo].self, from: d) { trash = items }
-        if let d = UserDefaults.standard.data(forKey: Self.categoriesKey),
-           let items = try? decoder.decode([TodoCategory].self, from: d) { categories = items }
+        incomplete = SharedDefaults.loadIncomplete()
+        completed = SharedDefaults.loadCompleted()
+        trash = SharedDefaults.loadTrash()
+        categories = SharedDefaults.loadCategories()
     }
 
     // MARK: - Todo CRUD
@@ -184,28 +176,93 @@ final class TodoStore: ObservableObject, TodoStoring {
         TodoFilterLogic.incompleteTodos(for: date, from: incomplete)
     }
 
+    /// 캘린더용: 오늘이면 dueDate 없는 할일도 포함
+    func calendarIncompleteTodos(for date: Date) -> [Todo] {
+        TodoFilterLogic.calendarIncompleteTodos(for: date, from: incomplete)
+    }
+
     /// 날짜 미지정 미완료 할 일
     var todosWithoutDueDate: [Todo] {
         TodoFilterLogic.todosWithoutDueDate(from: incomplete)
     }
 
-    /// 특정 날짜의 완료 할 일 (dueDate 또는 completedAt 기준)
+    /// 특정 날짜의 완료 할 일 (dueDate 또는 completedAt 기준 + 연속 할일)
     func completedTodos(for date: Date) -> [Todo] {
-        TodoFilterLogic.completedTodos(for: date, from: completed)
+        TodoFilterLogic.completedTodos(for: date, from: completed, incomplete: incomplete)
+    }
+
+    // MARK: - 오늘 필터 (할일 탭용)
+
+    /// 오늘 미완료 일반 할일 (마감일 있으면 오늘/지연, 없으면 항상 노출)
+    var todayIncompleteRegular: [Todo] {
+        TodoFilterLogic.todayIncompleteRegular(from: incomplete)
+    }
+
+    /// 오늘 활성 연속 할일 (완료/미완료 모두)
+    var todayActivePeriodTodos: [Todo] {
+        TodoFilterLogic.todayActivePeriodTodos(from: incomplete)
+    }
+
+    /// 오늘 완료된 일반 할일
+    var todayCompletedTodos: [Todo] {
+        TodoFilterLogic.todayCompletedTodos(from: completed)
+    }
+
+    /// 오늘 미완료 카운트 (Hero용)
+    var todayIncompleteCount: Int {
+        TodoFilterLogic.todayIncompleteCount(from: incomplete)
+    }
+
+    // MARK: - 연속 할일 완료 토글
+
+    func toggleDailyCompletion(_ todo: Todo, date: Date = .now) {
+        incomplete = TodoMutationLogic.toggleDailyCompletion(
+            todoId: todo.id, date: date, incomplete: incomplete
+        )
+        save()
+    }
+
+    // MARK: - Update (연속 할일 포함)
+
+    func updateWithPeriod(
+        id: String, title: String, memo: String?, dueDate: Date?,
+        startDate: Date?, endDate: Date?,
+        priority: Priority, categoryName: String?, categoryColor: String?,
+        reminderMinutes: Int? = nil
+    ) {
+        let result = TodoMutationLogic.updateWithPeriod(
+            id: id, title: title, memo: memo, dueDate: dueDate,
+            startDate: startDate, endDate: endDate,
+            priority: priority, categoryName: categoryName,
+            categoryColor: categoryColor, reminderMinutes: reminderMinutes,
+            incomplete: incomplete, completed: completed
+        )
+        incomplete = result.incomplete
+        completed = result.completed
+        save()
     }
 
     // MARK: - Seed Data
 
     private func seed() {
+        let cal = Calendar.current
         incomplete = [
             Todo(title: "프로젝트 보고서", memo: "Q3 재무 보고서 마감",
-                 dueDate: Calendar.current.date(byAdding: .day, value: -2, to: .now),
+                 dueDate: cal.date(byAdding: .day, value: -2, to: .now),
                  priority: .high, categoryName: "업무", categoryColor: "4DC87B"),
             Todo(title: "장보기", memo: "계란, 우유, 제철 과일",
                  dueDate: .now, priority: .medium, categoryName: "쇼핑", categoryColor: "FFC847"),
             Todo(title: "책 읽기", memo: "디자인 오브 에브리데이 씽스 50p",
-                 dueDate: Calendar.current.date(byAdding: .day, value: 5, to: .now),
+                 dueDate: cal.date(byAdding: .day, value: 5, to: .now),
                  priority: .low, categoryName: "개인", categoryColor: "5A8AF2"),
+            Todo(title: "매일 운동하기", memo: "30분 이상 유산소",
+                 priority: .medium, categoryName: "개인", categoryColor: "5A8AF2",
+                 startDate: cal.date(byAdding: .day, value: -2, to: .now),
+                 endDate: cal.date(byAdding: .day, value: 3, to: .now)),
+            Todo(title: "영어 공부", memo: "단어 50개 암기",
+                 priority: .low, categoryName: "개인", categoryColor: "5A8AF2",
+                 startDate: .now,
+                 endDate: cal.date(byAdding: .day, value: 6, to: .now)),
         ]
         completed = [
             Todo(title: "아침 운동", categoryName: "개인", isCompleted: true, completedAt: .now),
@@ -213,9 +270,9 @@ final class TodoStore: ObservableObject, TodoStoring {
         ]
         trash = [
             Todo(title: "운동하기 🏃", isDeleted: true,
-                 deletedAt: Calendar.current.date(byAdding: .day, value: -2, to: .now)),
+                 deletedAt: cal.date(byAdding: .day, value: -2, to: .now)),
             Todo(title: "영화 예매 🎬", isDeleted: true,
-                 deletedAt: Calendar.current.date(byAdding: .day, value: -5, to: .now)),
+                 deletedAt: cal.date(byAdding: .day, value: -5, to: .now)),
         ]
     }
 }
