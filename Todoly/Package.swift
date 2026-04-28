@@ -3,5 +3,5 @@ import PackageDescription
 
 let package = Package(
     name: "Todoly",
-    platforms: [.iOS(.v17)]
+    platforms: [.iOS(.v17), .watchOS(.v10)]
 )

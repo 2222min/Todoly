@@ -3,46 +3,72 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		009151036699462A60591B30 /* TaskCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5F2AC82D3DB98CEDA50F83 /* TaskCardView.swift */; };
 		00F29E0AD053095E4E528350 /* TodoFilterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EFFD5DA8E5DB8F6FA1D4E4 /* TodoFilterLogic.swift */; };
 		012EE55DF86078F7AA1C215D /* TrashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFD8781A8440030CED4B51 /* TrashView.swift */; };
+		072DD227C01297757D60E617 /* ToggleTodoIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB6267D9EC3953F423C7EAC /* ToggleTodoIntent.swift */; };
 		079685C50AF7BC361E7852C8 /* CompletedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD4C2C922FE265D92859BD /* CompletedRow.swift */; };
 		08B13D0249FAB7D22895A3D3 /* TuistBundle+Todoly.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB437356BAE44A2DA9B107FF /* TuistBundle+Todoly.swift */; };
+		0C6B75E0390063D60486AE6B /* TodoFilterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EFFD5DA8E5DB8F6FA1D4E4 /* TodoFilterLogic.swift */; };
 		0E76D5DD8C39A71C716F55EE /* TodoStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7265829DF67362B176C2399 /* TodoStoreTests.swift */; };
+		10F074049DCEC2FB005353A4 /* TodayMediumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B06FC7322E8DEF2AB7E0C /* TodayMediumView.swift */; };
 		138CDA6A830A6EA19D9B380E /* SoftPressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8092C5CA7C3956D4B4786E16 /* SoftPressStyle.swift */; };
+		14474046657630EA0754DDF6 /* TodayLargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1AF2AA78CAFA2A0A0E35AC /* TodayLargeView.swift */; };
 		15D211390EA142DE8DED4DEF /* DayTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B9DF879DB9C5EB271CC1 /* DayTaskRow.swift */; };
 		181B8646D2EC96FB2E521765 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7F2E80F072E696EFD3B140 /* MainTabView.swift */; };
 		19C8E7355BC0DD325B94A4D3 /* NoDueDateTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC417C6F0AA697C49A8FACF1 /* NoDueDateTaskRow.swift */; };
+		1BFCD1151684B2A0CFE60817 /* TodoMutationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1A820115F3D92400323C00 /* TodoMutationLogic.swift */; };
+		1EBD9A146A4A65D02B4E0793 /* UnifiedListLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8214FA1C07786450BA2313 /* UnifiedListLogicTests.swift */; };
 		2147602EF20546A29F14C6E7 /* NotificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ADBD1B6FCACA06573390C3 /* NotificationServiceTests.swift */; };
 		2AA7D26622BD466209F33A77 /* CalendarConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0AC571C249B706D1F1346D /* CalendarConstants.swift */; };
+		2B1B0660316D0C4B3300AFC3 /* WatchLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB15F8F02FA3849DEFABCF /* WatchLogicTests.swift */; };
+		2CCC18A3D3F8D54D5E93F466 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E9A678F3C6997D5C4E88D4 /* Priority.swift */; };
 		2DB648092262592F9894AC07 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EF237863AF724B318CE671 /* LoginView.swift */; };
+		3017CE84C7FCA7B1E1A9FF1B /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D78D2CFAB7093D7FEC84088 /* SharedDefaults.swift */; };
 		3330E6958C5906923D5DEB0A /* TodolyWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D145DC5096EDFFA6DC806F84 /* TodolyWidgetBundle.swift */; };
 		34828E02FD3D2C874F7F5EB9 /* TodolyAlarmLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792A11DF62C156A613B1747B /* TodolyAlarmLiveActivity.swift */; };
 		357F1366A12B62C1D4709CEC /* TodoCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689CD26CEE597860FED56456 /* TodoCategory.swift */; };
 		36190E281AA9F82854407453 /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB00A4A5FF2E8B225CC646F /* CategoryListView.swift */; };
 		3F2C004F6BF058CE595F2F99 /* UndoToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640800851977674E3DCE9FC /* UndoToast.swift */; };
 		43BFCE24DCB272787E3BF5AD /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C96BA0F550BF5F86D69AD /* MainListView.swift */; };
+		46FF2F668294C1E305E3B42C /* Color+Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B47DA5E48D40EB7293DF8 /* Color+Brand.swift */; };
 		488AC9928D684081C8A0753F /* BottomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8698085785BE5ED12C4C2F /* BottomNavBar.swift */; };
 		48AC248ADAA2164A16052AC5 /* TuistAssets+Todoly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3545B15865A11E769AB8B84 /* TuistAssets+Todoly.swift */; };
 		4F828B20D5DC3A08C5CA1ED8 /* AddTaskSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F021C40452BE3AE79358F /* AddTaskSheet.swift */; };
 		505BED62A2E59D02B5458EFF /* TodoAlarmAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF4598EFCE0880B4B35304A /* TodoAlarmAttributes.swift */; };
 		54E88ECAF3B2DA413209F154 /* TodoAlarmAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF4598EFCE0880B4B35304A /* TodoAlarmAttributes.swift */; };
+		56ED8049F67F9E93BEBE0ABE /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D78D2CFAB7093D7FEC84088 /* SharedDefaults.swift */; };
+		581FB9180F7C8C1F1230FB33 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBDCEDB6EF9B478CAD57C5D /* Todo.swift */; };
 		5B2CF5377C178030CB426C72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584E982CDEC2288B8FF39DF /* AppDelegate.swift */; };
+		5DD8D93E921B456A6C99BD89 /* WatchTodoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3866031797F829D21500ADC3 /* WatchTodoRow.swift */; };
+		61181EC1E5BE9F4702A06E29 /* TodayWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC23AB60DEF8E0F6B3210B /* TodayWidgetProvider.swift */; };
 		6446CA391D9892CC04C1CEE7 /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C1DA76715ED61C6A3E226 /* CategoryRow.swift */; };
 		654821EB83ABE0BE7D15AC20 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C917A04713E273D9A14CEFF7 /* TodoStore.swift */; };
+		6668F4D70D7BDF4D4FE8F4FD /* SharedDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4309369EFE72BC6EABCF42 /* SharedDefaultsTests.swift */; };
+		6A63C798F49E329B5EC43104 /* WidgetLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3880B0B47D6B5E6204C5B7A /* WidgetLogicTests.swift */; };
 		6AE5A14BDE0D91A7FAEB0FF4 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463770EA26D9851909D4BE6E /* RootView.swift */; };
 		6CB9FD5C063A22BF43D8BF87 /* DateBadgeLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDA12C20FBFEF6BD2633C2 /* DateBadgeLogic.swift */; };
+		6D7A1232AECE2B396348BDBD /* TodolyWatchExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 54F962A957EDC36FDB694331 /* TodolyWatchExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		70A1F7B2817DDC39D22D72CC /* TodayWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79BD6397D4B528716E61F03 /* TodayWidgetEntryView.swift */; };
+		73BFA750E0D237C733166AF7 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBDCEDB6EF9B478CAD57C5D /* Todo.swift */; };
+		75CEBB04DB7DB37DD6B79F4C /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E9A678F3C6997D5C4E88D4 /* Priority.swift */; };
+		7A4847B1D5D2D2D530DE8681 /* TodolyWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA812F55D246714ECE4399BC /* TodolyWatchApp.swift */; };
 		808A33DDAD92420CBCD4B221 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E9A678F3C6997D5C4E88D4 /* Priority.swift */; };
+		83102869BB5C65AEE3759DCF /* PeriodTaskCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14999FFC0BCC78C9B2182C95 /* PeriodTaskCardView.swift */; };
+		83BF746221896632B83CAEE7 /* WeeklyCalendarStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E0D20AAFD989AAC64B071 /* WeeklyCalendarStrip.swift */; };
 		889B5D2D87E6993C2BC4E442 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020BEAC40D261823F992BE84 /* AppState.swift */; };
+		8CFCC5D5E2A668B318FEF86D /* Color+Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B47DA5E48D40EB7293DF8 /* Color+Brand.swift */; };
+		9263E05478A3A72BF19A45C4 /* TodoCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689CD26CEE597860FED56456 /* TodoCategory.swift */; };
 		92B46FE901D65516356E2026 /* TodolyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5537FA0BA0E8CB7D0B6177 /* TodolyApp.swift */; };
 		94BC6AC6575EC31523254B36 /* CalendarGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA5CAEBBEB6A8DD05D3B57 /* CalendarGridView.swift */; };
 		9F91F4743010FA2632574F01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B48CC6E0B21DF5375D5F2FF8 /* Assets.xcassets */; };
 		9FCCD1F0F12792EFB642224C /* NotificationScheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA8FAF8BB0F1E849D384C5 /* NotificationScheduling.swift */; };
 		A22B68EE1BFD7A3DC9864C7E /* BadgeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6DB711D8D991DD11E91ECE /* BadgeStyle.swift */; };
+		A2489BB8A03830C6EAC984C3 /* CompletedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EF720A9D553EB9594BA4B7 /* CompletedListView.swift */; };
 		A86711034A8AEC4CE6888DEE /* TodoStoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5289B48743ED8675C943A61 /* TodoStoring.swift */; };
 		A9B3F2235AE974B2C5ECCC5A /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C37C5D6B2E2C88BC0257EE /* Tab.swift */; };
 		B493F2938DF8F5AFE1A701F8 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE1B597F56B384A7FE847D3 /* CalendarHeaderView.swift */; };
@@ -50,19 +76,28 @@
 		BDD7A6DBFE9826336E127F75 /* TodoCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02532C4BA4A152F40DF9F7 /* TodoCheckbox.swift */; };
 		C4C2C55D0E36312A37E94A3D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6074753772A40B15CA0DB116 /* SplashView.swift */; };
 		CC5B8843484C524536D8CE8B /* CategoryAddSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06AAE605EFCF6033188004 /* CategoryAddSheet.swift */; };
+		DA490FD027750215C914CBD2 /* TodayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6909DE0C00EB1E18CB791 /* TodayListView.swift */; };
 		DA9EF121B28CC7D8325A0E73 /* TodoMutationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1A820115F3D92400323C00 /* TodoMutationLogic.swift */; };
+		DAA3F53B1D797D37286C441A /* TodaySmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8A9B95978575B31151A725 /* TodaySmallView.swift */; };
 		DDAFF56F98B21B777D0AE3D3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A196BABDC054C6A876046AB /* CalendarView.swift */; };
 		E187DD32788FB207C5B1182A /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80C1D5FEDC1DAFB041CE56 /* TaskDetailView.swift */; };
 		E2253B07941B8DB0556FF6C0 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7A1319DE2608545311502 /* AlarmView.swift */; };
 		E2B7003094784BC78808D0CC /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7721CA1DB257EA56DD568771 /* CategoryFilterView.swift */; };
+		E60D80687012A9B7862866B6 /* TodolyWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E3B217941792F6F65FC1186D /* TodolyWatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E833CA020558D1E2ECF69A8B /* TodolyWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 054266CBF9DA63AB600B8057 /* TodolyWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EAF5C806428E0407F93BE164 /* TodoCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689CD26CEE597860FED56456 /* TodoCategory.swift */; };
 		EB4CDF1CAE1D6A52BAD37019 /* Date+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01E761D827DD38B967917 /* Date+Badge.swift */; };
 		EBC5FAE7AEC8F3234D5533ED /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAF7BE42D0129A3536D5B2B /* CustomDatePicker.swift */; };
 		EBEDCEC21D42FC3B7CD22F67 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5C6BD500AD095627637CE3 /* NotificationService.swift */; };
 		ED460FB3C39066890118699E /* todoly_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5F09D8E254F29A37B2F1F84E /* todoly_alarm.caf */; };
+		EED585AFC59D1D2C80B9F64A /* TodoMutationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1A820115F3D92400323C00 /* TodoMutationLogic.swift */; };
 		F08BA29193CB9C54A3CAA21C /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBDCEDB6EF9B478CAD57C5D /* Todo.swift */; };
+		F2612AB28ECF13DA94D3D1D9 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D78D2CFAB7093D7FEC84088 /* SharedDefaults.swift */; };
 		F859BDEADCC30BB0934A23DE /* Color+Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B47DA5E48D40EB7293DF8 /* Color+Brand.swift */; };
 		FA47AC4DDD7B1C672240A517 /* CategoryMutationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334C40107DF1E7291E6B581E /* CategoryMutationLogic.swift */; };
+		FAAF3AC4DF3A9AC6FB722D8A /* TodoFilterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EFFD5DA8E5DB8F6FA1D4E4 /* TodoFilterLogic.swift */; };
 		FBE542D6598275411CF637BE /* TodoAlarmAttributesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473DBE27C2D581FE297D68A /* TodoAlarmAttributesTests.swift */; };
+		FEB982C90EACF667382B2D52 /* WatchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8576479E97438588ED7A7CD /* WatchStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,9 +108,40 @@
 			remoteGlobalIDString = 2108DD7E7DF2FA3B7CAE8967;
 			remoteInfo = Todoly;
 		};
+		3593237607A462A7FB53A320 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7B0AD73DECCE68416E03BB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05DEDB08E13F63415109F498;
+			remoteInfo = TodolyWidget;
+		};
+		45F27C8E24DFA7545AE8C7A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7B0AD73DECCE68416E03BB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FADE7C79320790AF0CA740FD;
+			remoteInfo = TodolyWatchApp;
+		};
+		FC6F70EBA203CB3FEAAC1301 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7B0AD73DECCE68416E03BB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95846EBE273EADA8D30C50F7;
+			remoteInfo = TodolyWatchExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		6633221B7C9F44A4B53541ED /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstSubfolderSpec = 13;
+			files = (
+				6D7A1232AECE2B396348BDBD /* TodolyWatchExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8495492BA6C18739B5792C9B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -84,6 +150,16 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85F48ED96E6D6B116D82DDFB /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstSubfolderSpec = 13;
+			files = (
+				E833CA020558D1E2ECF69A8B /* TodolyWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8B2582761ECC8E0883619437 /* Embed Frameworks */ = {
@@ -96,7 +172,38 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BCF94D4D795F826897656330 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2FB6C1F99C2F19C80B08644 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				E60D80687012A9B7862866B6 /* TodolyWatchApp.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3837677E12F11D2EA286663 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBEA60AE5284B46AC502907B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
@@ -112,57 +219,81 @@
 		020BEAC40D261823F992BE84 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		054266CBF9DA63AB600B8057 /* TodolyWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodolyWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A80C1D5FEDC1DAFB041CE56 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		0C5B06FC7322E8DEF2AB7E0C /* TodayMediumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMediumView.swift; sourceTree = "<group>"; };
 		0D1A820115F3D92400323C00 /* TodoMutationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMutationLogic.swift; sourceTree = "<group>"; };
 		12EF237863AF724B318CE671 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		14999FFC0BCC78C9B2182C95 /* PeriodTaskCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodTaskCardView.swift; sourceTree = "<group>"; };
+		150F325A96E00F8F17A9B5F8 /* TodolyWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodolyWatch.entitlements; sourceTree = "<group>"; };
 		166B47DA5E48D40EB7293DF8 /* Color+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Brand.swift"; sourceTree = "<group>"; };
 		16E9A678F3C6997D5C4E88D4 /* Priority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
+		182A81C782FFD50EC78344F4 /* TodolyWatchApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TodolyWatchApp-Info.plist"; sourceTree = "<group>"; };
 		1BB7A1319DE2608545311502 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		1C5537FA0BA0E8CB7D0B6177 /* TodolyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolyApp.swift; sourceTree = "<group>"; };
+		1D78D2CFAB7093D7FEC84088 /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
+		28EF720A9D553EB9594BA4B7 /* CompletedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedListView.swift; sourceTree = "<group>"; };
 		2BEA5CAEBBEB6A8DD05D3B57 /* CalendarGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGridView.swift; sourceTree = "<group>"; };
 		30C37C5D6B2E2C88BC0257EE /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		334C40107DF1E7291E6B581E /* CategoryMutationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMutationLogic.swift; sourceTree = "<group>"; };
 		3503B9DF879DB9C5EB271CC1 /* DayTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTaskRow.swift; sourceTree = "<group>"; };
+		3866031797F829D21500ADC3 /* WatchTodoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTodoRow.swift; sourceTree = "<group>"; };
+		39BB15F8F02FA3849DEFABCF /* WatchLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLogicTests.swift; sourceTree = "<group>"; };
 		3EBDCEDB6EF9B478CAD57C5D /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		3F8698085785BE5ED12C4C2F /* BottomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavBar.swift; sourceTree = "<group>"; };
 		430B47715E2005B9E861CD27 /* TodolyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TodolyTests-Info.plist"; sourceTree = "<group>"; };
 		45C01E761D827DD38B967917 /* Date+Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Badge.swift"; sourceTree = "<group>"; };
 		463770EA26D9851909D4BE6E /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		50D6909DE0C00EB1E18CB791 /* TodayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayListView.swift; sourceTree = "<group>"; };
+		531EAFFB603262B90DB53BDF /* Todoly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Todoly.entitlements; sourceTree = "<group>"; };
+		54F962A957EDC36FDB694331 /* TodolyWatchExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodolyWatchExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		56CC6B6825759CE23C950467 /* TodolyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodolyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BCFD8781A8440030CED4B51 /* TrashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashView.swift; sourceTree = "<group>"; };
 		5E7F2E80F072E696EFD3B140 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		5F09D8E254F29A37B2F1F84E /* todoly_alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = todoly_alarm.caf; sourceTree = "<group>"; };
+		5F09D8E254F29A37B2F1F84E /* todoly_alarm.caf */ = {isa = PBXFileReference; path = todoly_alarm.caf; sourceTree = "<group>"; };
 		6074753772A40B15CA0DB116 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		60EFFD5DA8E5DB8F6FA1D4E4 /* TodoFilterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFilterLogic.swift; sourceTree = "<group>"; };
 		6640800851977674E3DCE9FC /* UndoToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoToast.swift; sourceTree = "<group>"; };
 		689CD26CEE597860FED56456 /* TodoCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCategory.swift; sourceTree = "<group>"; };
 		6A196BABDC054C6A876046AB /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		6A5C6BD500AD095627637CE3 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		6C1AF2AA78CAFA2A0A0E35AC /* TodayLargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayLargeView.swift; sourceTree = "<group>"; };
+		6E8A9B95978575B31151A725 /* TodaySmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySmallView.swift; sourceTree = "<group>"; };
 		7721CA1DB257EA56DD568771 /* CategoryFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterView.swift; sourceTree = "<group>"; };
 		792A11DF62C156A613B1747B /* TodolyAlarmLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolyAlarmLiveActivity.swift; sourceTree = "<group>"; };
 		8092C5CA7C3956D4B4786E16 /* SoftPressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftPressStyle.swift; sourceTree = "<group>"; };
 		83ADBD1B6FCACA06573390C3 /* NotificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceTests.swift; sourceTree = "<group>"; };
 		874CD96DB921191F9F05C47B /* TodolyWidget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TodolyWidget-Info.plist"; sourceTree = "<group>"; };
+		88BC23AB60DEF8E0F6B3210B /* TodayWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetProvider.swift; sourceTree = "<group>"; };
+		88D70221FA3A798F459C801C /* TodolyWatchExtension-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TodolyWatchExtension-Info.plist"; sourceTree = "<group>"; };
 		8A02532C4BA4A152F40DF9F7 /* TodoCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCheckbox.swift; sourceTree = "<group>"; };
 		8F5F2AC82D3DB98CEDA50F83 /* TaskCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardView.swift; sourceTree = "<group>"; };
 		903C1DA76715ED61C6A3E226 /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		9473DBE27C2D581FE297D68A /* TodoAlarmAttributesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAlarmAttributesTests.swift; sourceTree = "<group>"; };
 		94AA8FAF8BB0F1E849D384C5 /* NotificationScheduling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduling.swift; sourceTree = "<group>"; };
+		9A8214FA1C07786450BA2313 /* UnifiedListLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedListLogicTests.swift; sourceTree = "<group>"; };
 		9AB00A4A5FF2E8B225CC646F /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
 		9BBC7E9A93CA98F9B0A4058F /* Todoly-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Todoly-Info.plist"; sourceTree = "<group>"; };
 		9C1C96BA0F550BF5F86D69AD /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
+		AA812F55D246714ECE4399BC /* TodolyWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolyWatchApp.swift; sourceTree = "<group>"; };
 		B48CC6E0B21DF5375D5F2FF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B79BD6397D4B528716E61F03 /* TodayWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetEntryView.swift; sourceTree = "<group>"; };
 		BB0AC571C249B706D1F1346D /* CalendarConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarConstants.swift; sourceTree = "<group>"; };
 		BBE1B597F56B384A7FE847D3 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		BC6DB711D8D991DD11E91ECE /* BadgeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeStyle.swift; sourceTree = "<group>"; };
+		BCEC68CC8EEF483AD9D9481B /* TodolyWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodolyWidget.entitlements; sourceTree = "<group>"; };
 		C2A698BCEFFA288F5508F694 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C7265829DF67362B176C2399 /* TodoStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStoreTests.swift; sourceTree = "<group>"; };
 		C917A04713E273D9A14CEFF7 /* TodoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
 		CFEDA12C20FBFEF6BD2633C2 /* DateBadgeLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBadgeLogic.swift; sourceTree = "<group>"; };
 		D145DC5096EDFFA6DC806F84 /* TodolyWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolyWidgetBundle.swift; sourceTree = "<group>"; };
+		D3880B0B47D6B5E6204C5B7A /* WidgetLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLogicTests.swift; sourceTree = "<group>"; };
 		D5289B48743ED8675C943A61 /* TodoStoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStoring.swift; sourceTree = "<group>"; };
 		DB437356BAE44A2DA9B107FF /* TuistBundle+Todoly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+Todoly.swift"; sourceTree = "<group>"; };
 		DBAF7BE42D0129A3536D5B2B /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		DC417C6F0AA697C49A8FACF1 /* NoDueDateTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDueDateTaskRow.swift; sourceTree = "<group>"; };
+		E3B217941792F6F65FC1186D /* TodolyWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodolyWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8576479E97438588ED7A7CD /* WatchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStore.swift; sourceTree = "<group>"; };
+		E86E0D20AAFD989AAC64B071 /* WeeklyCalendarStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarStrip.swift; sourceTree = "<group>"; };
+		EBB6267D9EC3953F423C7EAC /* ToggleTodoIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTodoIntent.swift; sourceTree = "<group>"; };
 		EFF4598EFCE0880B4B35304A /* TodoAlarmAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAlarmAttributes.swift; sourceTree = "<group>"; };
 		F2EF4C1A783A522E5F846ACA /* Todoly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3545B15865A11E769AB8B84 /* TuistAssets+Todoly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+Todoly.swift"; sourceTree = "<group>"; };
@@ -170,9 +301,17 @@
 		FB06AAE605EFCF6033188004 /* CategoryAddSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddSheet.swift; sourceTree = "<group>"; };
 		FC9F021C40452BE3AE79358F /* AddTaskSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskSheet.swift; sourceTree = "<group>"; };
 		FDDD4C2C922FE265D92859BD /* CompletedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedRow.swift; sourceTree = "<group>"; };
+		FF4309369EFE72BC6EABCF42 /* SharedDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaultsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		036DC5B150248368BBFFBD8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0B871EE63347808467E9CE06 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,6 +320,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8E864D91D28AEB3A0FA1E85F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B967F700527F9B2ADCD79AB4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -212,6 +358,8 @@
 			children = (
 				9BBC7E9A93CA98F9B0A4058F /* Todoly-Info.plist */,
 				430B47715E2005B9E861CD27 /* TodolyTests-Info.plist */,
+				182A81C782FFD50EC78344F4 /* TodolyWatchApp-Info.plist */,
+				88D70221FA3A798F459C801C /* TodolyWatchExtension-Info.plist */,
 				874CD96DB921191F9F05C47B /* TodolyWidget-Info.plist */,
 			);
 			path = InfoPlists;
@@ -231,6 +379,8 @@
 			children = (
 				F2EF4C1A783A522E5F846ACA /* Todoly.app */,
 				56CC6B6825759CE23C950467 /* TodolyTests.xctest */,
+				E3B217941792F6F65FC1186D /* TodolyWatchApp.app */,
+				54F962A957EDC36FDB694331 /* TodolyWatchExtension.appex */,
 				054266CBF9DA63AB600B8057 /* TodolyWidget.appex */,
 			);
 			name = Products;
@@ -241,9 +391,19 @@
 			children = (
 				FDDD4C2C922FE265D92859BD /* CompletedRow.swift */,
 				9C1C96BA0F550BF5F86D69AD /* MainListView.swift */,
+				14999FFC0BCC78C9B2182C95 /* PeriodTaskCardView.swift */,
 				8F5F2AC82D3DB98CEDA50F83 /* TaskCardView.swift */,
+				E86E0D20AAFD989AAC64B071 /* WeeklyCalendarStrip.swift */,
 			);
 			path = TaskList;
+			sourceTree = "<group>";
+		};
+		2935A2406753F1113A9C8E5D /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+				EBB6267D9EC3953F423C7EAC /* ToggleTodoIntent.swift */,
+			);
+			path = Intent;
 			sourceTree = "<group>";
 		};
 		362BF96D0781216DB6465BC9 /* Todoly */ = {
@@ -256,6 +416,7 @@
 				77F572CA7C72361A91EB01E9 /* Features */,
 				B48CC6E0B21DF5375D5F2FF8 /* Assets.xcassets */,
 				5F09D8E254F29A37B2F1F84E /* todoly_alarm.caf */,
+				531EAFFB603262B90DB53BDF /* Todoly.entitlements */,
 			);
 			path = Todoly;
 			sourceTree = "<group>";
@@ -340,8 +501,12 @@
 			isa = PBXGroup;
 			children = (
 				83ADBD1B6FCACA06573390C3 /* NotificationServiceTests.swift */,
+				FF4309369EFE72BC6EABCF42 /* SharedDefaultsTests.swift */,
 				9473DBE27C2D581FE297D68A /* TodoAlarmAttributesTests.swift */,
 				C7265829DF67362B176C2399 /* TodoStoreTests.swift */,
+				9A8214FA1C07786450BA2313 /* UnifiedListLogicTests.swift */,
+				39BB15F8F02FA3849DEFABCF /* WatchLogicTests.swift */,
+				D3880B0B47D6B5E6204C5B7A /* WidgetLogicTests.swift */,
 			);
 			path = TodolyTests;
 			sourceTree = "<group>";
@@ -400,7 +565,10 @@
 		B6A23DC97A11A7D495E54143 /* TodolyWidget */ = {
 			isa = PBXGroup;
 			children = (
+				2935A2406753F1113A9C8E5D /* Intent */,
+				C9C71246707C772D58CA3541 /* TodayWidget */,
 				792A11DF62C156A613B1747B /* TodolyAlarmLiveActivity.swift */,
+				BCEC68CC8EEF483AD9D9481B /* TodolyWidget.entitlements */,
 				D145DC5096EDFFA6DC806F84 /* TodolyWidgetBundle.swift */,
 			);
 			path = TodolyWidget;
@@ -430,11 +598,26 @@
 			isa = PBXGroup;
 			children = (
 				A9EEC6CE502D2F5E5BD4AF19 /* Derived */,
+				CFBA5EA6EDFEC30AA9B622C8 /* Shared */,
 				362BF96D0781216DB6465BC9 /* Todoly */,
 				8EFD5A619CF5224C9D00E564 /* TodolyTests */,
+				C798DEA5CD75964D6646E226 /* TodolyWatch */,
 				B6A23DC97A11A7D495E54143 /* TodolyWidget */,
 			);
 			name = Project;
+			sourceTree = "<group>";
+		};
+		C798DEA5CD75964D6646E226 /* TodolyWatch */ = {
+			isa = PBXGroup;
+			children = (
+				28EF720A9D553EB9594BA4B7 /* CompletedListView.swift */,
+				50D6909DE0C00EB1E18CB791 /* TodayListView.swift */,
+				150F325A96E00F8F17A9B5F8 /* TodolyWatch.entitlements */,
+				AA812F55D246714ECE4399BC /* TodolyWatchApp.swift */,
+				E8576479E97438588ED7A7CD /* WatchStore.swift */,
+				3866031797F829D21500ADC3 /* WatchTodoRow.swift */,
+			);
+			path = TodolyWatch;
 			sourceTree = "<group>";
 		};
 		C813CE08CE00A0E453174C02 /* Alarm */ = {
@@ -453,6 +636,18 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		C9C71246707C772D58CA3541 /* TodayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				6C1AF2AA78CAFA2A0A0E35AC /* TodayLargeView.swift */,
+				0C5B06FC7322E8DEF2AB7E0C /* TodayMediumView.swift */,
+				6E8A9B95978575B31151A725 /* TodaySmallView.swift */,
+				B79BD6397D4B528716E61F03 /* TodayWidgetEntryView.swift */,
+				88BC23AB60DEF8E0F6B3210B /* TodayWidgetProvider.swift */,
+			);
+			path = TodayWidget;
+			sourceTree = "<group>";
+		};
 		CE262DC40BE5F16536269E6C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,6 +655,14 @@
 				DB437356BAE44A2DA9B107FF /* TuistBundle+Todoly.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		CFBA5EA6EDFEC30AA9B622C8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1D78D2CFAB7093D7FEC84088 /* SharedDefaults.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		D86A2B9BDE2599BEF50366F6 /* Extensions */ = {
@@ -539,17 +742,39 @@
 			buildPhases = (
 				3C81345225810B20BE121E70 /* Sources */,
 				8AEB3F1B33D5EA8BDB08A165 /* Resources */,
+				85F48ED96E6D6B116D82DDFB /* Embed Foundation Extensions */,
+				C2FB6C1F99C2F19C80B08644 /* Embed Watch Content */,
 				D3837677E12F11D2EA286663 /* Embed Frameworks */,
 				8E864D91D28AEB3A0FA1E85F /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2E2D1E72DD65DF160EB40930 /* PBXTargetDependency */,
+				BB49176367B52E716F8A31F4 /* PBXTargetDependency */,
 			);
 			name = Todoly;
 			productName = Todoly;
 			productReference = F2EF4C1A783A522E5F846ACA /* Todoly.app */;
 			productType = "com.apple.product-type.application";
+		};
+		95846EBE273EADA8D30C50F7 /* TodolyWatchExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2588260C6C09953EE37B9ACF /* Build configuration list for PBXNativeTarget "TodolyWatchExtension" */;
+			buildPhases = (
+				A78992D411465AEB20F3A8F2 /* Sources */,
+				4294EC0900AC1A31FF9892ED /* Resources */,
+				EBEA60AE5284B46AC502907B /* Embed Frameworks */,
+				B967F700527F9B2ADCD79AB4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TodolyWatchExtension;
+			productName = TodolyWatchExtension;
+			productReference = 54F962A957EDC36FDB694331 /* TodolyWatchExtension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		CDF588C8BC4D944A26F7D486 /* TodolyTests */ = {
 			isa = PBXNativeTarget;
@@ -569,6 +794,25 @@
 			productName = TodolyTests;
 			productReference = 56CC6B6825759CE23C950467 /* TodolyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FADE7C79320790AF0CA740FD /* TodolyWatchApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FF277D9D31BFE4B17ED1892 /* Build configuration list for PBXNativeTarget "TodolyWatchApp" */;
+			buildPhases = (
+				77D7471019B25571D627F69A /* Resources */,
+				6633221B7C9F44A4B53541ED /* Embed Foundation Extensions */,
+				BCF94D4D795F826897656330 /* Embed Frameworks */,
+				036DC5B150248368BBFFBD8D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFB1EC5FAB944D1816C05E13 /* PBXTargetDependency */,
+			);
+			name = TodolyWatchApp;
+			productName = TodolyWatchApp;
+			productReference = E3B217941792F6F65FC1186D /* TodolyWatchApp.app */;
+			productType = "com.apple.product-type.application.watchapp2";
 		};
 /* End PBXNativeTarget section */
 
@@ -599,11 +843,27 @@
 				2108DD7E7DF2FA3B7CAE8967 /* Todoly */,
 				CDF588C8BC4D944A26F7D486 /* TodolyTests */,
 				05DEDB08E13F63415109F498 /* TodolyWidget */,
+				FADE7C79320790AF0CA740FD /* TodolyWatchApp */,
+				95846EBE273EADA8D30C50F7 /* TodolyWatchExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4294EC0900AC1A31FF9892ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77D7471019B25571D627F69A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8AEB3F1B33D5EA8BDB08A165 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -635,8 +895,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2147602EF20546A29F14C6E7 /* NotificationServiceTests.swift in Sources */,
+				6668F4D70D7BDF4D4FE8F4FD /* SharedDefaultsTests.swift in Sources */,
 				FBE542D6598275411CF637BE /* TodoAlarmAttributesTests.swift in Sources */,
 				0E76D5DD8C39A71C716F55EE /* TodoStoreTests.swift in Sources */,
+				1EBD9A146A4A65D02B4E0793 /* UnifiedListLogicTests.swift in Sources */,
+				2B1B0660316D0C4B3300AFC3 /* WatchLogicTests.swift in Sources */,
+				6A63C798F49E329B5EC43104 /* WidgetLogicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +910,7 @@
 			files = (
 				48AC248ADAA2164A16052AC5 /* TuistAssets+Todoly.swift in Sources */,
 				08B13D0249FAB7D22895A3D3 /* TuistBundle+Todoly.swift in Sources */,
+				3017CE84C7FCA7B1E1A9FF1B /* SharedDefaults.swift in Sources */,
 				5B2CF5377C178030CB426C72 /* AppDelegate.swift in Sources */,
 				889B5D2D87E6993C2BC4E442 /* AppState.swift in Sources */,
 				6AE5A14BDE0D91A7FAEB0FF4 /* RootView.swift in Sources */,
@@ -690,7 +955,9 @@
 				E187DD32788FB207C5B1182A /* TaskDetailView.swift in Sources */,
 				079685C50AF7BC361E7852C8 /* CompletedRow.swift in Sources */,
 				43BFCE24DCB272787E3BF5AD /* MainListView.swift in Sources */,
+				83102869BB5C65AEE3759DCF /* PeriodTaskCardView.swift in Sources */,
 				009151036699462A60591B30 /* TaskCardView.swift in Sources */,
+				83BF746221896632B83CAEE7 /* WeeklyCalendarStrip.swift in Sources */,
 				012EE55DF86078F7AA1C215D /* TrashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -699,9 +966,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56ED8049F67F9E93BEBE0ABE /* SharedDefaults.swift in Sources */,
+				8CFCC5D5E2A668B318FEF86D /* Color+Brand.swift in Sources */,
+				0C6B75E0390063D60486AE6B /* TodoFilterLogic.swift in Sources */,
+				EED585AFC59D1D2C80B9F64A /* TodoMutationLogic.swift in Sources */,
+				2CCC18A3D3F8D54D5E93F466 /* Priority.swift in Sources */,
+				73BFA750E0D237C733166AF7 /* Todo.swift in Sources */,
 				505BED62A2E59D02B5458EFF /* TodoAlarmAttributes.swift in Sources */,
+				9263E05478A3A72BF19A45C4 /* TodoCategory.swift in Sources */,
+				072DD227C01297757D60E617 /* ToggleTodoIntent.swift in Sources */,
+				14474046657630EA0754DDF6 /* TodayLargeView.swift in Sources */,
+				10F074049DCEC2FB005353A4 /* TodayMediumView.swift in Sources */,
+				DAA3F53B1D797D37286C441A /* TodaySmallView.swift in Sources */,
+				70A1F7B2817DDC39D22D72CC /* TodayWidgetEntryView.swift in Sources */,
+				61181EC1E5BE9F4702A06E29 /* TodayWidgetProvider.swift in Sources */,
 				34828E02FD3D2C874F7F5EB9 /* TodolyAlarmLiveActivity.swift in Sources */,
 				3330E6958C5906923D5DEB0A /* TodolyWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A78992D411465AEB20F3A8F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2612AB28ECF13DA94D3D1D9 /* SharedDefaults.swift in Sources */,
+				46FF2F668294C1E305E3B42C /* Color+Brand.swift in Sources */,
+				FAAF3AC4DF3A9AC6FB722D8A /* TodoFilterLogic.swift in Sources */,
+				1BFCD1151684B2A0CFE60817 /* TodoMutationLogic.swift in Sources */,
+				75CEBB04DB7DB37DD6B79F4C /* Priority.swift in Sources */,
+				581FB9180F7C8C1F1230FB33 /* Todo.swift in Sources */,
+				EAF5C806428E0407F93BE164 /* TodoCategory.swift in Sources */,
+				A2489BB8A03830C6EAC984C3 /* CompletedListView.swift in Sources */,
+				DA490FD027750215C914CBD2 /* TodayListView.swift in Sources */,
+				7A4847B1D5D2D2D530DE8681 /* TodolyWatchApp.swift in Sources */,
+				FEB982C90EACF667382B2D52 /* WatchStore.swift in Sources */,
+				5DD8D93E921B456A6C99BD89 /* WatchTodoRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +1012,24 @@
 			name = Todoly;
 			target = 2108DD7E7DF2FA3B7CAE8967 /* Todoly */;
 			targetProxy = 094F4BA5587A8DD59808DBF1 /* PBXContainerItemProxy */;
+		};
+		2E2D1E72DD65DF160EB40930 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TodolyWatchApp;
+			target = FADE7C79320790AF0CA740FD /* TodolyWatchApp */;
+			targetProxy = 45F27C8E24DFA7545AE8C7A8 /* PBXContainerItemProxy */;
+		};
+		BB49176367B52E716F8A31F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TodolyWidget;
+			target = 05DEDB08E13F63415109F498 /* TodolyWidget */;
+			targetProxy = 3593237607A462A7FB53A320 /* PBXContainerItemProxy */;
+		};
+		EFB1EC5FAB944D1816C05E13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TodolyWatchExtension;
+			target = 95846EBE273EADA8D30C50F7 /* TodolyWatchExtension */;
+			targetProxy = FC6F70EBA203CB3FEAAC1301 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -776,9 +1093,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Todoly/Todoly.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5UGTTL8VT9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Derived/InfoPlists/Todoly-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -802,9 +1119,9 @@
 		51709803BFBDDAEBAD8EA39E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodolyWidget/TodolyWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5UGTTL8VT9;
 				INFOPLIST_FILE = "Derived/InfoPlists/TodolyWidget-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -823,6 +1140,31 @@
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5E10BFDFCAB0C93334222C3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodolyWatch/TodolyWatch.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Derived/InfoPlists/TodolyWatchExtension-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.todoly.app.watchkitapp.extension;
+				PRODUCT_NAME = TodolyWatchExtension;
+				SDKROOT = watchos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -891,9 +1233,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Todoly/Todoly.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5UGTTL8VT9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Derived/InfoPlists/Todoly-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -920,7 +1262,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5UGTTL8VT9;
 				INFOPLIST_FILE = "Derived/InfoPlists/TodolyTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -942,12 +1283,36 @@
 			};
 			name = Release;
 		};
+		8350FF4ECA27273B3BEE6485 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodolyWatch/TodolyWatch.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Derived/InfoPlists/TodolyWatchExtension-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.todoly.app.watchkitapp.extension;
+				PRODUCT_NAME = TodolyWatchExtension;
+				SDKROOT = watchos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 		CE1F5993C5112446725A45EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodolyWidget/TodolyWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5UGTTL8VT9;
 				INFOPLIST_FILE = "Derived/InfoPlists/TodolyWidget-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -968,12 +1333,68 @@
 			};
 			name = Release;
 		};
+		D92C317492EF319209510653 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TodolyWatch/TodolyWatch.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				IBSC_MODULE = TodolyWatchExtension;
+				INFOPLIST_FILE = "Derived/InfoPlists/TodolyWatchApp-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.todoly.app.watchkitapp;
+				PRODUCT_NAME = TodolyWatchApp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		F540CDF44ECE8A34E6AA28CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TodolyWatch/TodolyWatch.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				IBSC_MODULE = TodolyWatchExtension;
+				INFOPLIST_FILE = "Derived/InfoPlists/TodolyWatchApp-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.todoly.app.watchkitapp;
+				PRODUCT_NAME = TodolyWatchApp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
 		FFCFD4EE1F3DEB5611EE4B5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5UGTTL8VT9;
 				INFOPLIST_FILE = "Derived/InfoPlists/TodolyTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1004,6 +1425,24 @@
 			buildConfigurations = (
 				FFCFD4EE1F3DEB5611EE4B5C /* Debug */,
 				812F2A297CBE269E2615A60E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2588260C6C09953EE37B9ACF /* Build configuration list for PBXNativeTarget "TodolyWatchExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E10BFDFCAB0C93334222C3D /* Debug */,
+				8350FF4ECA27273B3BEE6485 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FF277D9D31BFE4B17ED1892 /* Build configuration list for PBXNativeTarget "TodolyWatchApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F540CDF44ECE8A34E6AA28CF /* Debug */,
+				D92C317492EF319209510653 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

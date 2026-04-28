@@ -47,10 +47,16 @@ let project = Project(
                 "Todoly/Data/**",
                 "Todoly/Domain/**",
                 "Todoly/Features/**",
+                "Shared/**",
             ],
             resources: [
                 "Todoly/Assets.xcassets/**",
                 "Todoly/todoly_alarm.caf",
+            ],
+            entitlements: .file(path: "Todoly/Todoly.entitlements"),
+            dependencies: [
+                .target(name: "TodolyWidget"),
+                .target(name: "TodolyWatchApp"),
             ],
             settings: .settings(
                 base: [
@@ -73,7 +79,7 @@ let project = Project(
             ]
         ),
 
-        // MARK: - Widget Extension (Live Activity)
+        // MARK: - Widget Extension (Live Activity + Today Widget)
         Target(
             name: "TodolyWidget",
             platform: .iOS,
@@ -87,10 +93,74 @@ let project = Project(
             ]),
             sources: [
                 "TodolyWidget/**",
+                "Todoly/Domain/Models/Todo.swift",
+                "Todoly/Domain/Models/TodoCategory.swift",
+                "Todoly/Domain/Models/Priority.swift",
                 "Todoly/Domain/Models/TodoAlarmAttributes.swift",
+                "Todoly/Domain/Logic/TodoFilterLogic.swift",
+                "Todoly/Domain/Logic/TodoMutationLogic.swift",
+                "Todoly/Core/Extensions/Color+Brand.swift",
+                "Shared/**",
+            ],
+            entitlements: .file(path: "TodolyWidget/TodolyWidget.entitlements"),
+            settings: .settings(
+                base: [
+                    "MARKETING_VERSION": "1.0.0",
+                    "CURRENT_PROJECT_VERSION": "1",
+                ]
+            )
+        ),
+
+        // MARK: - Watch App (Container)
+        Target(
+            name: "TodolyWatchApp",
+            platform: .watchOS,
+            product: .watch2App,
+            bundleId: "com.todoly.app.watchkitapp",
+            deploymentTarget: .watchOS(targetVersion: "10.0"),
+            infoPlist: .extendingDefault(with: [
+                "CFBundleDisplayName": "Todoly",
+                "WKCompanionAppBundleIdentifier": "com.todoly.app",
+            ]),
+            entitlements: .file(path: "TodolyWatch/TodolyWatch.entitlements"),
+            dependencies: [
+                .target(name: "TodolyWatchExtension"),
             ],
             settings: .settings(
                 base: [
+                    "SWIFT_VERSION": "5.9",
+                    "DEVELOPMENT_TEAM": "",
+                    "MARKETING_VERSION": "1.0.0",
+                    "CURRENT_PROJECT_VERSION": "1",
+                ]
+            )
+        ),
+
+        // MARK: - Watch Extension (Sources)
+        Target(
+            name: "TodolyWatchExtension",
+            platform: .watchOS,
+            product: .watch2Extension,
+            bundleId: "com.todoly.app.watchkitapp.extension",
+            deploymentTarget: .watchOS(targetVersion: "10.0"),
+            infoPlist: .extendingDefault(with: [
+                "WKExtensionDelegateClassName": "$(PRODUCT_MODULE_NAME).ExtensionDelegate",
+            ]),
+            sources: [
+                "TodolyWatch/**",
+                "Todoly/Domain/Models/Todo.swift",
+                "Todoly/Domain/Models/TodoCategory.swift",
+                "Todoly/Domain/Models/Priority.swift",
+                "Todoly/Domain/Logic/TodoFilterLogic.swift",
+                "Todoly/Domain/Logic/TodoMutationLogic.swift",
+                "Todoly/Core/Extensions/Color+Brand.swift",
+                "Shared/**",
+            ],
+            entitlements: .file(path: "TodolyWatch/TodolyWatch.entitlements"),
+            settings: .settings(
+                base: [
+                    "SWIFT_VERSION": "5.9",
+                    "DEVELOPMENT_TEAM": "",
                     "MARKETING_VERSION": "1.0.0",
                     "CURRENT_PROJECT_VERSION": "1",
                 ]
