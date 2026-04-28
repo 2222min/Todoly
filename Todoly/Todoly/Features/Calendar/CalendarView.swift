@@ -59,19 +59,14 @@ struct CalendarView: View {
 
     @ViewBuilder
     private var selectedDateContent: some View {
-        let noDueDateTodos = store.todosWithoutDueDate
-
         if let date = selectedDate {
-            let todos = store.incompleteTodos(for: date)
+            let todos = store.calendarIncompleteTodos(for: date)
             let completedTodos = store.completedTodos(for: date)
             let hasAnyContent = !todos.isEmpty || !completedTodos.isEmpty
-            let hasDueDateTodos = !store.todosWithDueDate.isEmpty
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
-                    if !hasDueDateTodos && noDueDateTodos.isEmpty {
-                        emptyMessage("마감일을 설정하면\n캘린더에서 확인할 수 있어요 📅")
-                    } else if !hasAnyContent {
+                    if !hasAnyContent {
                         emptyMessage("이 날은 할 일이 없어요 🎉")
                     } else {
                         Text(dayHeaderString(for: date))
@@ -87,24 +82,15 @@ struct CalendarView: View {
                             completedSection(todos: completedTodos)
                         }
                     }
-
-                    // 날짜 미지정 섹션 (항상 표시, 있을 때만)
-                    if !noDueDateTodos.isEmpty {
-                        noDueDateSection(todos: noDueDateTodos)
-                    }
                 }
-                .padding(.bottom, 100)
+                .padding(.bottom, 140)
             }
             .id(date)
             .transition(.move(edge: .bottom).combined(with: .opacity))
         } else {
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
-                    emptyMessage("이 달은 할 일이 없어요 📅")
-
-                    if !noDueDateTodos.isEmpty {
-                        noDueDateSection(todos: noDueDateTodos)
-                    }
+                    emptyMessage("날짜를 선택해주세요 📅")
                 }
             }
         }
@@ -125,10 +111,14 @@ struct CalendarView: View {
             ForEach(Array(todos.enumerated()), id: \.element.id) { index, todo in
                 DayTaskRow(
                     todo: todo, index: index, date: date,
-                    onTap: { selectedTodoId = TodoSheetItem(id: todo.id) },
+                    onEdit: { selectedTodoId = TodoSheetItem(id: todo.id) },
                     onComplete: {
                         withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
-                            store.toggleComplete(todo)
+                            if todo.isPeriodTask {
+                                store.toggleDailyCompletion(todo, date: date)
+                            } else {
+                                store.toggleComplete(todo)
+                            }
                         }
                     }
                 )
@@ -150,76 +140,20 @@ struct CalendarView: View {
                     todo: todo,
                     onToggle: {
                         withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
-                            store.toggleComplete(todo)
+                            if todo.isPeriodTask {
+                                store.toggleDailyCompletion(todo, date: selectedDate ?? .now)
+                            } else {
+                                store.toggleComplete(todo)
+                            }
                         }
-                    }
+                    },
+                    onEdit: { selectedTodoId = TodoSheetItem(id: todo.id) }
                 )
                 .padding(.horizontal, 16)
                 .transition(.asymmetric(
                     insertion: .scale(scale: 0.95).combined(with: .opacity),
                     removal: .scale(scale: 0.95).combined(with: .opacity)
                 ))
-            }
-        }
-    }
-
-    // MARK: - No Due Date Section
-
-    @State private var isNoDueDateExpanded = true
-
-    private func noDueDateSection(todos: [Todo]) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            // 구분선
-            Rectangle()
-                .fill(Color.gray.opacity(0.15))
-                .frame(height: 1)
-                .padding(.horizontal, 20).padding(.top, 8)
-
-            // 헤더
-            Button {
-                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
-                    isNoDueDateExpanded.toggle()
-                }
-            } label: {
-                HStack(spacing: 8) {
-                    Text("📌")
-                        .font(.system(size: 14))
-                    Text("날짜 미지정")
-                        .font(.system(size: 14, weight: .semibold, design: .rounded))
-                        .foregroundColor(.txt2)
-                    Text("\(todos.count)")
-                        .font(.system(size: 11, weight: .semibold, design: .rounded))
-                        .foregroundColor(.accent1)
-                        .padding(.horizontal, 7).padding(.vertical, 2)
-                        .background(Color.accent1.opacity(0.1)).clipShape(Capsule())
-                    Spacer()
-                    Image(systemName: isNoDueDateExpanded ? "chevron.up" : "chevron.down")
-                        .font(.system(size: 12, weight: .medium))
-                        .foregroundColor(.txt3)
-                }
-                .padding(.horizontal, 24)
-            }
-
-            // 할일 목록
-            if isNoDueDateExpanded {
-                VStack(spacing: 8) {
-                    ForEach(todos) { todo in
-                        NoDueDateTaskRow(
-                            todo: todo,
-                            onTap: { selectedTodoId = TodoSheetItem(id: todo.id) },
-                            onComplete: {
-                                withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
-                                    store.toggleComplete(todo)
-                                }
-                            }
-                        )
-                        .transition(.asymmetric(
-                            insertion: .scale(scale: 0.95).combined(with: .opacity),
-                            removal: .scale(scale: 0.95).combined(with: .opacity)
-                        ))
-                    }
-                }
-                .padding(.horizontal, 24)
             }
         }
     }
@@ -234,7 +168,7 @@ struct CalendarView: View {
             Spacer()
         }
         .padding(.horizontal, 24).padding(.vertical, 16)
-        .background(Color.white.opacity(0.95).shadow(color: .black.opacity(0.04), radius: 12, y: 4))
+        .background(Color.brandBg)
     }
 
     // MARK: - Actions

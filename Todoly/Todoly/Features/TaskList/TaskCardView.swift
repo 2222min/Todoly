@@ -2,21 +2,25 @@ import SwiftUI
 
 struct TaskCardView: View {
     let todo: Todo
+    var isCompleted: Bool = false
     @EnvironmentObject var store: TodoStore
     @State private var showDetail = false
 
     var body: some View {
         HStack(spacing: 12) {
             priorityBar
-            checkboxButton
-            contentSection
-            Spacer()
+            checkboxArea
+            Spacer(minLength: 0)
+            editButton
         }
         .padding(.horizontal, 16).padding(.vertical, 14)
         .background(
             RoundedRectangle(cornerRadius: 20).fill(Color.white)
                 .shadow(color: .black.opacity(0.06), radius: 16, y: 4)
         )
+        .opacity(isCompleted ? 0.55 : 1.0)
+        .contentShape(RoundedRectangle(cornerRadius: 20))
+        .onTapGesture { toggleComplete() }
         .fullScreenCover(isPresented: $showDetail) {
             NavigationStack { TaskDetailView(todoId: todo.id) }
         }
@@ -31,34 +35,49 @@ struct TaskCardView: View {
             .frame(width: 4, height: 48)
     }
 
-    private var checkboxButton: some View {
-        TodoCheckbox(isCompleted: false) {
-            withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
-                store.toggleComplete(todo)
+    private var checkboxArea: some View {
+        HStack(spacing: 12) {
+            TodoCheckbox(isCompleted: isCompleted) { toggleComplete() }
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(todo.title)
+                    .font(.system(size: 15, weight: .bold, design: .rounded))
+                    .foregroundColor(isCompleted ? .txt3 : .txt1)
+                    .strikethrough(isCompleted)
+                    .lineLimit(1)
+                HStack(spacing: 6) {
+                    if let cat = todo.categoryName {
+                        Text(cat).font(.system(size: 11, weight: .medium, design: .rounded)).foregroundColor(.txt3)
+                    }
+                    if todo.categoryName != nil && todo.dueDate != nil {
+                        Text("·").font(.system(size: 11)).foregroundColor(.txt3)
+                    }
+                    if isCompleted, let time = todo.completedAt?.formatted(date: .omitted, time: .shortened) {
+                        Text(time).font(.system(size: 11, design: .rounded)).foregroundColor(.txt3)
+                    } else if let (text, style) = todo.dueDate?.badge {
+                        BadgeView(text: text, style: style)
+                    }
+                }
             }
         }
     }
 
-    private var contentSection: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(todo.title)
-                .font(.system(size: 15, weight: .bold, design: .rounded))
-                .foregroundColor(.txt1).lineLimit(1)
-            HStack(spacing: 6) {
-                if let cat = todo.categoryName {
-                    Text(cat).font(.system(size: 11, weight: .medium, design: .rounded)).foregroundColor(.txt3)
-                }
-                if todo.categoryName != nil && todo.dueDate != nil {
-                    Text("·").font(.system(size: 11)).foregroundColor(.txt3)
-                }
-                if let (text, style) = todo.dueDate?.badge {
-                    BadgeView(text: text, style: style)
-                }
-            }
+    private var editButton: some View {
+        Button { showDetail = true } label: {
+            Image(systemName: "pencil")
+                .font(.system(size: 14, weight: .medium))
+                .foregroundColor(.txt3)
+                .frame(width: 36, height: 36)
+                .background(Color.gray.opacity(0.08))
+                .clipShape(Circle())
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .contentShape(Rectangle())
-        .onTapGesture { showDetail = true }
+        .buttonStyle(.plain)
+    }
+
+    private func toggleComplete() {
+        withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
+            store.toggleComplete(todo)
+        }
     }
 }
 
@@ -77,7 +96,6 @@ struct BadgeView: View {
             .clipShape(Capsule())
     }
 
-    /// 순수 함수: 스타일 → 전경색
     var foregroundColor: Color {
         switch style {
         case .overdue: Color(hex: "D32F2F")
@@ -87,7 +105,6 @@ struct BadgeView: View {
         }
     }
 
-    /// 순수 함수: 스타일 → 배경색
     var backgroundColor: Color {
         switch style {
         case .overdue: Color(hex: "FFE0E0")
@@ -112,11 +129,10 @@ struct BadgeView: View {
             dueDate: .now,
             priority: .medium, categoryName: "쇼핑", categoryColor: "FFC847"
         ))
-        TaskCardView(todo: Todo(
-            title: "책 읽기",
-            dueDate: Calendar.current.date(byAdding: .day, value: 5, to: .now),
-            priority: .low, categoryName: "개인"
-        ))
+        TaskCardView(
+            todo: Todo(title: "아침 운동", categoryName: "개인", isCompleted: true, completedAt: .now),
+            isCompleted: true
+        )
     }
     .padding()
     .background(Color.brandBg)

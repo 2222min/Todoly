@@ -4,7 +4,7 @@ struct DayTaskRow: View {
     let todo: Todo
     let index: Int
     let date: Date
-    let onTap: () -> Void
+    let onEdit: () -> Void
     let onComplete: () -> Void
 
     var body: some View {
@@ -17,12 +17,8 @@ struct DayTaskRow: View {
             RoundedRectangle(cornerRadius: 2)
                 .fill(Color(hex: todo.priority.color)).frame(width: 3, height: 48)
 
-            // 체크박스 버튼 — 통일된 컴포넌트
-            TodoCheckbox(isCompleted: false) {
-                onComplete()
-            }
+            TodoCheckbox(isCompleted: false) { onComplete() }
 
-            // 텍스트 영역 — 탭하면 상세로 이동
             VStack(alignment: .leading, spacing: 4) {
                 Text(todo.title)
                     .font(.system(size: 14, weight: .bold, design: .rounded))
@@ -34,15 +30,26 @@ struct DayTaskRow: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .contentShape(Rectangle())
-            .onTapGesture { onTap() }
 
             Spacer(minLength: 0)
+
+            // 수정 버튼
+            Button { onEdit() } label: {
+                Image(systemName: "pencil")
+                    .font(.system(size: 13, weight: .medium))
+                    .foregroundColor(.txt3)
+                    .frame(width: 32, height: 32)
+                    .background(Color.gray.opacity(0.08))
+                    .clipShape(Circle())
+            }
+            .buttonStyle(.plain)
         }
         .padding(.horizontal, 16).frame(height: 72)
         .frame(maxWidth: .infinity)
         .background(Color.white).clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: .black.opacity(0.06), radius: 16)
+        .contentShape(RoundedRectangle(cornerRadius: 20))
+        .onTapGesture { onComplete() }
     }
 
     /// 순수 함수: 메타 텍스트 생성
@@ -64,6 +71,7 @@ struct DayTaskRow: View {
 struct CompletedDayTaskRow: View {
     let todo: Todo
     let onToggle: () -> Void
+    var onEdit: (() -> Void)? = nil
 
     var body: some View {
         HStack(spacing: 12) {
@@ -71,10 +79,7 @@ struct CompletedDayTaskRow: View {
                 .fill(Color(hex: todo.priority.color).opacity(0.4))
                 .frame(width: 3, height: 48)
 
-            // 체크박스 (완료 상태) — 통일된 컴포넌트
-            TodoCheckbox(isCompleted: true) {
-                onToggle()
-            }
+            TodoCheckbox(isCompleted: true) { onToggle() }
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(todo.title)
@@ -95,13 +100,28 @@ struct CompletedDayTaskRow: View {
                     }
                 }
             }
-            Spacer()
+
+            Spacer(minLength: 0)
+
+            if let onEdit {
+                Button { onEdit() } label: {
+                    Image(systemName: "pencil")
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundColor(.txt3)
+                        .frame(width: 32, height: 32)
+                        .background(Color.gray.opacity(0.08))
+                        .clipShape(Circle())
+                }
+                .buttonStyle(.plain)
+            }
         }
         .padding(.horizontal, 16).frame(height: 72)
         .frame(maxWidth: .infinity)
         .background(Color.white).clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: .black.opacity(0.06), radius: 16)
         .opacity(0.55)
+        .contentShape(RoundedRectangle(cornerRadius: 20))
+        .onTapGesture { onToggle() }
         .accessibilityLabel("\(todo.title), 완료됨")
     }
 
@@ -131,7 +151,7 @@ struct CompletedDayTaskRow: View {
     VStack(spacing: 12) {
         DayTaskRow(
             todo: Todo(title: "프로젝트 보고서", dueDate: .now, priority: .high, categoryName: "업무"),
-            index: 0, date: Date(), onTap: {}, onComplete: {}
+            index: 0, date: Date(), onEdit: {}, onComplete: {}
         )
         CompletedDayTaskRow(
             todo: Todo(title: "아침 운동", categoryName: "개인", isCompleted: true),
