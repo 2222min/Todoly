@@ -5,6 +5,7 @@ struct MainListView: View {
     @State private var quickText = ""
     @State private var showSearch = false
     @State private var showAddSheet = false
+    @State private var selectedDate = Date()
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -12,11 +13,11 @@ struct MainListView: View {
                 mainHeader
                 ScrollView {
                     VStack(alignment: .leading, spacing: 28) {
-                        heroSection
+                        WeeklyCalendarStrip(selectedDate: $selectedDate)
+                            .padding(.top, 8)
                         quickAddBar
-                        incompleteSection
-                        completedSection
-                    }.padding(.bottom, 100)
+                        todaySection
+                    }.padding(.bottom, 140)
                 }
             }
 
@@ -28,7 +29,7 @@ struct MainListView: View {
         }
         .background(Color.brandBg)
         .fullScreenCover(isPresented: $showSearch) { SearchView() }
-        .fullScreenCover(isPresented: $showAddSheet) { AddTaskSheet() }
+        .fullScreenCover(isPresented: $showAddSheet) { AddTaskSheet(initialDate: selectedDate) }
     }
 
     // MARK: - Header
@@ -39,6 +40,18 @@ struct MainListView: View {
                 .font(.system(size: 22, weight: .heavy, design: .rounded))
                 .tracking(-1).foregroundColor(.txt1)
             Spacer()
+            if !Calendar.current.isDateInToday(selectedDate) {
+                Button {
+                    withAnimation(.easeInOut(duration: 0.2)) { selectedDate = Date() }
+                } label: {
+                    Text("오늘")
+                        .font(.system(size: 13, weight: .semibold, design: .rounded))
+                        .foregroundColor(.accent1)
+                        .padding(.horizontal, 12).padding(.vertical, 6)
+                        .background(Color.accent1.opacity(0.1))
+                        .clipShape(Capsule())
+                }
+            }
             Button { showSearch = true } label: {
                 Image(systemName: "magnifyingglass")
                     .font(.system(size: 16, weight: .medium)).foregroundColor(.txt2)
@@ -49,20 +62,7 @@ struct MainListView: View {
             }
         }
         .padding(.horizontal, 24).padding(.vertical, 14)
-        .background(Color.white.opacity(0.95).shadow(color: .black.opacity(0.04), radius: 12, y: 4))
-    }
-
-    // MARK: - Hero
-
-    private var heroSection: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("오늘의 할 일")
-                .font(.system(size: 26, weight: .bold, design: .rounded))
-                .tracking(-0.5).foregroundColor(.txt1)
-            Text("\(store.incomplete.count)개 남음")
-                .font(.system(size: 14, weight: .medium, design: .rounded))
-                .foregroundColor(.txt3)
-        }.padding(.horizontal, 24).padding(.top, 24)
+        .background(Color.brandBg)
     }
 
     // MARK: - Quick Add
@@ -73,7 +73,7 @@ struct MainListView: View {
             TextField("새로운 할 일 추가...", text: $quickText, prompt: Text("새로운 할 일 추가...").foregroundColor(.txt2))
                 .font(.system(size: 14, design: .rounded))
                 .foregroundColor(.txt1)
-                .onSubmit { store.add(quickText); quickText = "" }
+                .onSubmit { quickAdd() }
             Button { showAddSheet = true } label: {
                 LinearGradient(colors: [.accent1, Color(hex: "FF6B6B")],
                                startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -88,51 +88,98 @@ struct MainListView: View {
         .padding(.horizontal, 24)
     }
 
-    // MARK: - Incomplete
+    // MARK: - Unified Task Section
 
-    private var incompleteSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack(spacing: 8) {
-                Text("미완료")
-                    .font(.system(size: 17, weight: .bold, design: .rounded)).foregroundColor(.txt1)
-                Text("\(store.incomplete.count)")
-                    .font(.system(size: 12, weight: .semibold, design: .rounded)).foregroundColor(.accent1)
-                    .padding(.horizontal, 8).padding(.vertical, 3)
-                    .background(Color.accent1.opacity(0.1)).clipShape(Capsule())
-                Spacer()
-            }.padding(.horizontal, 24)
+    private var todaySection: some View {
+        let isToday = Calendar.current.isDateInToday(selectedDate)
 
-            VStack(spacing: 12) {
-                ForEach(store.incomplete) { todo in
-                    TaskCardView(todo: todo)
+        // 미완료 일반: 오늘이면 마감일 없는 것도 포함, 다른 날이면 해당 날짜 + 지연 포함
+        let incompleteTodos: [Todo] = isToday
+            ? store.todayIncompleteRegular
+            : store.calendarIncompleteTodos(for: selectedDate)
+
+        // 연속 할일
+        let periodTodos = TodoFilterLogic.periodTodosActive(on: selectedDate, from: store.incomplete)
+
+        // 완료
+        let completedTodos = isToday
+            ? store.todayCompletedTodos
+            : store.completedTodos(for: selectedDate)
+
+        let totalIncomplete = incompleteTodos.count + periodTodos.filter { !$0.isCompletedOn(selectedDate) }.count
+        let totalCount = incompleteTodos.count + periodTodos.count + completedTodos.count
+
+        // 헤더 텍스트
+        let headerText: String = {
+            if isToday { return "오늘 할 일" }
+            let df = DateFormatter()
+            df.locale = Locale(identifier: "ko_KR")
+            df.dateFormat = "M월 d일 할 일"
+            return df.string(from: selectedDate)
+        }()
+
+        return Group {
+            if totalCount > 0 {
+                VStack(alignment: .leading, spacing: 16) {
+                    HStack(spacing: 8) {
+                        Text(headerText)
+                            .font(.system(size: 17, weight: .bold, design: .rounded)).foregroundColor(.txt1)
+                        if totalIncomplete > 0 {
+                            Text("\(totalIncomplete)")
+                                .font(.system(size: 12, weight: .semibold, design: .rounded)).foregroundColor(.accent1)
+                                .padding(.horizontal, 8).padding(.vertical, 3)
+                                .background(Color.accent1.opacity(0.1)).clipShape(Capsule())
+                        }
+                        Spacer()
+                    }.padding(.horizontal, 24)
+
+                    VStack(spacing: 12) {
+                        // 1) 미완료 일반
+                        ForEach(incompleteTodos) { todo in
+                            TaskCardView(todo: todo)
+                        }
+
+                        // 2) 연속 할일 (미완료 먼저, 완료 나중)
+                        let periodIncomplete = periodTodos.filter { !$0.isCompletedOn(selectedDate) }
+                        let periodCompleted = periodTodos.filter { $0.isCompletedOn(selectedDate) }
+
+                        ForEach(periodIncomplete) { todo in
+                            PeriodTaskCardView(todo: todo)
+                        }
+                        ForEach(periodCompleted) { todo in
+                            PeriodTaskCardView(todo: todo)
+                        }
+
+                        // 3) 완료 일반
+                        ForEach(completedTodos) { todo in
+                            TaskCardView(todo: todo, isCompleted: true)
+                        }
+                    }.padding(.horizontal, 24)
                 }
-            }.padding(.horizontal, 24)
+            } else {
+                VStack(spacing: 8) {
+                    Text("🎉")
+                        .font(.system(size: 36))
+                    Text("할 일이 없어요")
+                        .font(.system(size: 15, weight: .medium, design: .rounded))
+                        .foregroundColor(.txt3)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.top, 40)
+            }
         }
     }
+    // MARK: - Actions
 
-    // MARK: - Completed
-
-    private var completedSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 8) {
-                Text("완료됨")
-                    .font(.system(size: 15, weight: .semibold, design: .rounded)).foregroundColor(.txt3)
-                Text("\(store.completed.count)")
-                    .font(.system(size: 11, weight: .semibold, design: .rounded)).foregroundColor(.txt3)
-                    .padding(.horizontal, 7).padding(.vertical, 2)
-                    .background(Color.gray.opacity(0.1)).clipShape(Capsule())
-                Spacer()
-            }
-            .padding(.horizontal, 24)
-            .padding(.vertical, 8)
-            .contentShape(Rectangle())
-
-            ForEach(store.completed) { todo in
-                CompletedRow(todo: todo).padding(.horizontal, 24)
-            }
+    private func quickAdd() {
+        guard !quickText.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+        let isToday = Calendar.current.isDateInToday(selectedDate)
+        var todo = Todo(title: quickText, priority: .medium)
+        if !isToday {
+            todo.dueDate = selectedDate
         }
-        .padding(.top, 8)
-        .padding(.bottom, 24)
+        store.incomplete.insert(todo, at: 0)
+        quickText = ""
     }
 }
 
