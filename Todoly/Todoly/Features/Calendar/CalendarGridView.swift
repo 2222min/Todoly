@@ -47,8 +47,9 @@ struct CalendarGridView: View {
         let date = CalendarDateLogic.makeDate(day: day, in: displayMonth)
         let isToday = Calendar.current.isDateInToday(date)
         let isSelected = selectedDate.map { Calendar.current.isDate($0, inSameDayAs: date) } ?? false
-        let todoCount = store.todos(for: date).count
-        let dots = DateBadgeLogic.dotPriorityColors(for: store.todos(for: date))
+        let calendarTodos = calendarTodosForDate(date)
+        let todoCount = calendarTodos.count
+        let dots = DateBadgeLogic.dotPriorityColors(for: calendarTodos)
 
         return Button { selectedDate = date } label: {
             VStack(spacing: 4) {
@@ -83,6 +84,13 @@ struct CalendarGridView: View {
     }
 
     // MARK: - Pure Helpers
+
+    /// CalendarView의 리스트 표시 로직과 일치하는 할 일 목록
+    private func calendarTodosForDate(_ date: Date) -> [Todo] {
+        let incomplete = TodoFilterLogic.calendarIncompleteTodos(for: date, from: store.incomplete)
+        let completed = TodoFilterLogic.completedTodos(for: date, from: store.completed, incomplete: store.incomplete)
+        return incomplete + completed
+    }
 
     private func weekdayColor(index: Int) -> Color {
         switch index {
